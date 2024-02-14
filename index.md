@@ -59,8 +59,13 @@ public class ArrayTests {
 }
 }
 ```
+
+
 >  As mentioned in the previous point, the original tests provided does not induce a failure, using a single element array and an empty array for the `reverseInPlace()` and `reversed()` methods. Now included is the test for the `averageWithoutLowest()` method, where you give it an array of elements greater than 2, then calculate the average without the lowest number (in this case, 50.0), which would come out to be 75.0. Then compare the expected average to the `input1` value when passed through the `averageWithoutLowest` method.
+
+
 ---
+
 
 * The symptom, as the output of running the tests (provide it as a screen shot of running JUnit with at least the two inputs above):
   

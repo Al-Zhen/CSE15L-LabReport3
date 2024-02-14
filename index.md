@@ -132,7 +132,7 @@ public class ArrayExamples {
 
 > In part 2, I will be looking at the command `grep`, which helps us search for specific texts or patterns within a text file.
 
-1. Using the `grep -n` command
+* Using the `grep -n` command
 
 > The `grep -n` command is structured as follows: `grep -n "some word you would like to search" [filename]`. In this `grep` command, it helps us search for a particular word in a text. It goes through every line in the txt file, searching for the specific word and noting which line has that specific word.
 
@@ -179,7 +179,7 @@ $ grep -n "Fiscal" ~/docsearch/technical/government/Gen_Account_Office/d01591sp.
 > 
 ---
 
-2. Using the `grep -A` command
+* Using the `grep -A` command
 
 > The `grep -A` command is pretty interesting, it searches for a specific text and then you include n-number of lines you would want to print after it finds that specific word. The `grep -A` command is structured as follows: `grep -A (# of lines) "text" [Filename]`.
 
@@ -239,8 +239,8 @@ $ grep -A 2 "cells" ~/docsearch/technical/biomed/1471-213X-3-2.txt
 
 ---
 
-3. Using the `grep -R` command
-4. 
+* Using the `grep -R` command
+
 > The `grep -R` command helps us search for a pattern or specific text within a directory. This means that if you gave `grep -R` a specific word and a directory, it will look through all the files in that directory and print out the location of the file that contains the word, as well as the text in that file. The command is structured as follows: `grep -R "some word" /path`.
 
 Example of using the `grep -R` command:
@@ -287,7 +287,9 @@ $ grep -R "organisms" ~/docsearch/technical/plos
 
 
 ---
-4. Using the `grep -v` command:
+
+
+* Using the `grep -v` command:
 
 > The `grep -v` command inverts the search, basically the opposite of the last 3 examples of grep, it will only display the lines that does not include the text or pattern that is specified. The `grep -v` command is structured as follows: `grep -v "text or pattern" [Filename]`.
 
@@ -343,6 +345,7 @@ $ grep -v "molecules" ~/docsearch/technical/plos/journal.pbio.0020012.txt
 > This is another example of using the `grep -v` command, in this example I used the search term "molecules" to be omitted from the txt file. "Molecules" was not apart of the the output text, as it was omitted. An example would be the empty space before "ageing, like diabetes and Alzheimer's/", there was a line of text that contained "molecules", therefore it was not included. 
 
 ---
+
 ## Sources used
 > * RackSpace Technology: https://docs.rackspace.com/docs/use-the-linux-grep-command
 > * Geeksforgeeks.org: https://www.geeksforgeeks.org/grep-command-in-unixlinux/

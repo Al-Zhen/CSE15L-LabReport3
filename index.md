@@ -68,6 +68,7 @@ public class ArrayTests {
 > * In the failure message, it states that in `testReverseInPlace`, the 3rd element in the array was 4, when the expected should be 2. This tells us that the `reverseInPlace()` method took the array given ([1,2,3,4,5]), passed through the `reverseInPlace()` method and overwritten the 3rd element in the array with 2, because when i = 3 for arr[3] = arr[5 - 3 - 1], it assigned arr[3] with arr[2]. Giving us [5,2,3,2,5] at i = 3. Coinciding with i = 4, where arr[4] = arr[0], giving us [1,2,3,2,5]. 
 > * In the failure message for `testReversed`, it states that the expected value in 1st element was 3, but it was 0. This is caused by the bug in the `reversed()` method, where a new array called `newArray` was created with the same length as the array that's being tested. This meant that the new array, `newArray` only consists of values of 0 for a particular array length. Therefore, `arr[i] = newArray[arr.length - i - 1]` basically rewrote all of the values in our test array ([1,2,3]) and set them all to 0. An example would be when i = 0, arr[0] = 1, but we set it equal to newArray[3 - 0 - 1], which is newArray[2] = 0. So, arr[0] = 0. Leaving us with [0,2,3] and would continue on with the other elements until it is [0,0,0]. 
 ---
+
 * The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown):
 > Before code change:
 ```
@@ -120,6 +121,7 @@ public class ArrayExamples {
 
 ```
 ---
+
 ## Part 2 - Researching Commands
 
 > In part 2, I will be looking at the command `grep`, which helps us search for specific texts or patterns within a text file.
@@ -128,6 +130,7 @@ public class ArrayExamples {
 > The `grep -n` command is structured as follows: `grep -n "some word you would like to search" [filename]`. In this `grep` command, it helps us search for a particular word in a text. It goes through every line in the txt file, searching for the specific word and noting which line has that specific word.
 
 Example of using the `grep -n` command:
+
 ```
 $ grep -n "alcohol" Session2-PDF.txt
 9:Many patients in the emergency department (ED) have alcohol
@@ -143,9 +146,11 @@ $ grep -n "alcohol" Session2-PDF.txt
 40:cases of alcohol abuse meet the ICD-10 definition. In general, an
 ...
 ```
+
 > When I ran the `grep -n` command, using the file `Session2-PDF.txt` from `technical/government/Alcohol_Problems` to search for the word "alcohol", it displayed each line that contained the word "alcohol" and noted which line it occurred as well. Knowing which line that contains a specific text or pattern is pretty useful in allowing us to quickly access that exact location and I believe it is also useful for documenting. 
 > 
 Another example of using `grep -n` command:
+
 ```
 $ grep -n "Fiscal" ~/docsearch/technical/government/Gen_Account_Office/d01591sp.txt
 112:Q4.1. How Has Federal Fiscal Policy Affected U.S. National
@@ -162,13 +167,17 @@ $ grep -n "Fiscal" ~/docsearch/technical/government/Gen_Account_Office/d01591sp.
 3205:Balancing Fiscal Risk (GAO-01-385T, February 6, 2001).
 ...
 ```
+
 > In this example, I used the `grep -n` command to search for the word "Fiscal", using a relative path to a specific text file. Again, it displays each line that the word "Fiscal" occurs in and denotes which line it occurs on.
+> 
 ---
 
 2. Using the `grep -A` command
+
 > The `grep -A` command is pretty interesting, it searches for a specific text and then you include n-number of lines you would want to print after it finds that specific word. The `grep -A` command is structured as follows: `grep -A (# of lines) "text" [Filename]`.
 
 Example of using the `grep -A (#number of lines) command`:
+
 ```
 $ grep -A 3 identify Session2-PDF.txt
 to identify these patients has been conducted, but several areas of
@@ -189,9 +198,11 @@ Association in DSM III-R, IV2 and the World Health Organization
 --
 ...
 ```
+
 > In this example of using the `grep -A` command, I used it to search for the word "identify" in the `Session2PDF.txt` and I wanted it to print out 3 lines after it finds the word "identify. When we look at the example, the first line contains the word "identify" and then it follows up with the next 3 lines of text. It continues to do so until the end of the text file. This would be useful when you are looking up a specific text or pattern and you want some sort of context of why it's there.
 
 Another example of using the `grep -A` command:
+
 ```
 $ grep -A 2 "cells" ~/docsearch/technical/biomed/1471-213X-3-2.txt
         class that transforms C57mg mouse mammary epithelial cells
@@ -214,12 +225,16 @@ $ grep -A 2 "cells" ~/docsearch/technical/biomed/1471-213X-3-2.txt
 --
 ...
 ```
+
 > This is another example of using the `grep -A` command, using it look for the word "cells" using a relative path to file I wanted to look into. It looks for the word "cells" and prints out the next 2 lines as well. In this example, in the 3rd search, it contains two occurences of "cells", one of them is included in the 2 lines that is being printed and then it prints out 2 more lines afterwards. 
 ---
+
 3. Using the `grep -R` command
+4. 
 > The `grep -R` command helps us search for a pattern or specific text within a directory. This means that if you gave `grep -R` a specific word and a directory, it will look through all the files in that directory and print out the location of the file that contains the word, as well as the text in that file. The command is structured as follows: `grep -R "some word" /path`.
 
 Example of using the `grep -R` command:
+
 ```
 $ grep -R "Economic" ~/docsearch/technical/government/
 /c/Users/Alex/docsearch/technical/government/About_LSC/ONTARIO_LEGAL_AID_SERIES.txt:initiated by the federal government's Office of Economic
@@ -236,9 +251,11 @@ $ grep -R "Economic" ~/docsearch/technical/government/
 a
 ...
 ```
+
 > In this example, I used `grep -R` to search for a term "Economic" in the `/government` directory. This gave me the absolute paths of the text files that contain the search term of "Economic", as well as a line from the text file containing it. The `grep -R` would really be useful for saving time on trying to find which file contains a certain search term/pattern, as it will point to the path of that specific file and display the line of text it is in. I believe it would be useful when working in larger codebases, when you're trying to find a specific string from all the files, it would save quite a bit of time.
 
 Another example of using the `grep -R` command:
+
 ```
 $ grep -R "organisms" ~/docsearch/technical/plos
 /c/Users/Alex/docsearch/technical/plos/journal.pbio.0020012.txt:        family of proteins with members in higher organisms, including SIR-2.1, an enzyme that
@@ -256,12 +273,15 @@ $ grep -R "organisms" ~/docsearch/technical/plos
 /c/Users/Alex/docsearch/technical/plos/journal.pbio.0020053.txt:        years, tiny organisms have engaged in an arms race, hurling toxic molecules at each other
 ...
 ```
+
 > This is another example of using the `grep -R` command, I used the search term of "organisms" and wanted to look for which files in the `plos` directory had this specific term. Similar to the last example, it gave me the absolute path of the txt files and the line of text that contains the search term.
 ---
 4. Using the `grep -v` command:
+
 > The `grep -v` command inverts the search, basically the opposite of the last 3 examples of grep, it will only display the lines that does not include the text or pattern that is specified. The `grep -v` command is structured as follows: `grep -v "text or pattern" [Filename]`.
 
 Example of using the `grep -v` command:
+
 ```
 $ grep -v "Barnes" Barnes_pro_bono.txt
 Duane D. Stanford
@@ -283,6 +303,7 @@ his surprise loss to Sonny Perdue on Nov. 5. Asked about his legacy
 up to others to determine."
 ...
 ```
+
 > Using the `grep -v` command, I wanted to omit the search term of "Barnes" from the `Barnes_pro_bono.txt` text file. When doing so, every line that contained the search term of "Barnes" was not included in the output. I believe this would be useful in filtering out lines that you don't want to see or like specific keywords, allowing you focus on something more relevant to the issue at hand.
 
 Another example of using the `grep -v` command:
@@ -307,6 +328,7 @@ $ grep -v "molecules" ~/docsearch/technical/plos/journal.pbio.0020012.txt
             ageing, like diabetes and Alzheimer's.”
 ...
 ```
+
 > This is another example of using the `grep -v` command, in this example I used the search term "molecules" to be omitted from the txt file. "Molecules" was not apart of the the output text, as it was omitted. An example would be the empty space before "ageing, like diabetes and Alzheimer's/", there was a line of text that contained "molecules", therefore it was not included. 
 
 ---

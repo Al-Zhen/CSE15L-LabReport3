@@ -67,11 +67,14 @@ public class ArrayTests {
 ![Image](7.PNG)
 > * When I ran the tests using the inputs from first *failure-inducing* inputs, it gave me two failures for `testReverseInPlace` and `testReversed`.
 > * In the failure message, it states that in `testReverseInPlace`, the 3rd element in the array was 4, when the expected should be 2. This tells us that the `reverseInPlace()` method took the array given ([1,2,3,4,5]), passed through the `reverseInPlace()` method and overwritten the 3rd element in the array with 2, because when i = 3 for arr[3] = arr[5 - 3 - 1], it assigned arr[3] with arr[2]. Giving us [5,2,3,2,5] at i = 3. Coinciding with i = 4, where arr[4] = arr[0], giving us [1,2,3,2,5]. 
-> * In the failure message for `testReversed`, it states that the expected value in 1st element was 3, but it was 0. This is caused by the bug in the `reversed()` method, where a new array called `newArray` was created with the same length as the array that's being tested. This meant that the new array, `newArray` only consists of values of 0 for a particular array length. Therefore, `arr[i] = newArray[arr.length - i - 1]` basically rewrote all of the values in our test array ([1,2,3]) and set them all to 0. An example would be when i = 0, arr[0] = 1, but we set it equal to newArray[3 - 0 - 1], which is newArray[2] = 0. So, arr[0] = 0. Leaving us with [0,2,3] and would continue on with the other elements until it is [0,0,0]. 
+> * In the failure message for `testReversed`, it states that the expected value in 1st element was 3, but it was 0. This is caused by the bug in the `reversed()` method, where a new array called `newArray` was created with the same length as the array that's being tested. This meant that the new array, `newArray` only consists of values of 0 for a particular array length. Therefore, `arr[i] = newArray[arr.length - i - 1]` basically rewrote all of the values in our test array ([1,2,3]) and set them all to 0. An example would be when i = 0, arr[0] = 1, but we set it equal to newArray[3 - 0 - 1], which is newArray[2] = 0. So, arr[0] = 0. Leaving us with [0,2,3] and would continue on with the other elements until it is [0,0,0].
+
+
 ---
 
 * The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown):
 > Before code change:
+
 ```
 public class ArrayExamples {
 
@@ -92,7 +95,9 @@ public class ArrayExamples {
     return arr;
   }
 ```
+
 > After code change:
+
 ```
 public class ArrayExamples {
 
@@ -119,7 +124,6 @@ public class ArrayExamples {
     }
     return newArray; //instead of returning the arr, return the newArray with the reversed array. 
   }
-
 ```
 ---
 
